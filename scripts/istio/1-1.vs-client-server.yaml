@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: chat-server
+spec:
+  gateways:
+  - server-gateway
+  hosts:
+  - chat-server.apps.atlanta-5d16.openshiftworkshop.com
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: chat-server
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: chat-client
+spec:
+  gateways:
+  - client-gateway
+  hosts:
+  - chat-client.apps.atlanta-5d16.openshiftworkshop.com
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: chat-client
+        subset: v1
