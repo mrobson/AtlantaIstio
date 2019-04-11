@@ -14,7 +14,6 @@ spec:
     route:
     - destination:
         host: chat-server
-        subset: v1
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -32,4 +31,3 @@ spec:
     route:
     - destination:
         host: chat-client
-        subset: v1

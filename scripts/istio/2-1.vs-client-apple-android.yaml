@@ -28,4 +28,3 @@ spec:
   - route:
     - destination:
         host: chat-client
-        subset: v1
